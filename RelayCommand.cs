@@ -1,70 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
+// Реализация команды, используемой в WPF для связывания действия пользователя с логикой приложения
 namespace CalculatorSQL
-{
-    /*
-    public class RelayCommand<T> : ICommand
+{   
+    public class RelayCommand : ICommand
     {
-        private readonly Predicate<T> _canExecute;
-        private readonly Action<T> _execute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
+        // Конструктор принимает действие и опционально условие
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
+        // Событие, которое генерируется при изменении состояния, указывающего, может ли команда быть выполнена
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Predicate<T> canExecute, Action<T> execute)
-        {
-            if (execute == null)
-            {
-                throw new ArgumentNullException("execute");
-            }
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
+        // Метод, который определяет, может ли команда выполняться
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute((T)parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
+        // Метод, который выполняет действие, связанное с командой
         public void Execute(object parameter)
         {
-            _execute((T)parameter);
+            _execute(parameter);
         }
-    } */
-
-    public class RelayCommand : ICommand
-{
-    private readonly Action<object> _execute;
-    private readonly Predicate<object> _canExecute;
-
-    public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
-    {
-        _execute = execute;
-        _canExecute = canExecute;
     }
-
-    public event EventHandler CanExecuteChanged
-    {
-        add { CommandManager.RequerySuggested += value; }
-        remove { CommandManager.RequerySuggested -= value; }
-    }
-
-    public bool CanExecute(object parameter)
-    {
-        return _canExecute == null || _canExecute(parameter);
-    }
-
-    public void Execute(object parameter)
-    {
-        _execute(parameter);
-    }
-}
 }

@@ -1,5 +1,8 @@
 ﻿namespace CalculatorSQL
 {
+    /// <summary>
+    /// Класс Log представляет запись журнала с информацией о произошедших событиях.
+    /// </summary>
     internal class Log
     {
         public int id { get; set; }

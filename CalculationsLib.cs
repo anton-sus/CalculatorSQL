@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// Библиотека вычислений.
+/// </summary>
 namespace CalculatorSQL
 {
     class CalculationsLib
@@ -11,7 +14,7 @@ namespace CalculatorSQL
         #endregion
 
         #region Constructors
-
+        // Конструктор для двух операндов и операции.
         public CalculationsLib(string firstOperand, string secondOperand, string operation)
         {
             ValidateOperand(firstOperand);
@@ -24,6 +27,7 @@ namespace CalculatorSQL
             result = string.Empty;
         }
 
+        // Конструктор для одного операнда и операции.
         public CalculationsLib(string firstOperand, string operation)
         {
             ValidateOperand(firstOperand);
@@ -35,6 +39,7 @@ namespace CalculatorSQL
             result = string.Empty;
         }
 
+        // Конструктор по умолчанию.
         public CalculationsLib()
         {
             FirstOperand = string.Empty;
@@ -52,6 +57,9 @@ namespace CalculatorSQL
         public string Operation { get; set; }
         public string Result { get { return result; } }
 
+        /// <summary>
+        /// Вычисление результата операции.
+        /// </summary>
         public void CalculateResult()
         {
             ValidateData();
@@ -98,6 +106,11 @@ namespace CalculatorSQL
             }
         }
 
+        /// <summary>
+        /// Метод, который проверяет, является ли входная строка операндом, конвертируя ее в double.
+        /// Если строка не может быть конвертирована в double, метод выбрасывает исключение.
+        /// </summary>
+        /// <param name="operand">Строка, которую нужно проверить на то, является ли она операндом.</param>
         private void ValidateOperand(string operand)
         {
             try
@@ -111,6 +124,11 @@ namespace CalculatorSQL
             }
         }
 
+        /// <summary>
+        /// Метод, который проверяет, является ли входная строка операцией, которую можно использовать в калькуляторе.
+        /// Если строка не соответствует допустимым операциям, метод выбрасывает исключение.
+        /// </summary>
+        /// <param name="operation">Строка, которую нужно проверить на то, является ли она операцией.</param>
         private void ValidateOperation(string operation)
         {
             switch (operation)
@@ -129,6 +147,10 @@ namespace CalculatorSQL
             }
         }
 
+        /// <summary>
+        /// Метод, который проверяет данные перед их использованием в вычислениях.
+        /// Если данные не соответствуют правилам, метод выбрасывает исключение.
+        /// </summary>
         private void ValidateData()
         {
             switch (Operation)
