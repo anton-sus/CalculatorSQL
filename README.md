@@ -1,4 +1,4 @@
-## CalculatorSQL
-WPF калькулятор с SQLite базой данных логов операций и ошибок.
+# CalculatorSQL
+## WPF calculator with SQLite database of operation and error logs.
 
-Приложение позволяет пользователю вводить математические операции и операнды с помощью интерфейса. После ввода данных калькулятор проверяет их на корректность и, если данные верны, выполняет операцию. После выполнения операции результат записывается в лог и сохраняется в базу данных.
+The application allows the user to enter mathematical operations and operands using the interface.  After entering the data, the calculator verifies that it is correct and, if the data is correct, it performs the operation.  After performing the operation, the result is recorded in the log and stored in the data base.
